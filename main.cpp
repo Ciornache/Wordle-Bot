@@ -1,55 +1,66 @@
 #include "bot.h"
-#include <chrono>
-#include <random>
-#include <ctime>
+#include "configs/config.h"
 
 using namespace std;
 
-mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-int rand(int a, int b)
-{
-    int ans = uniform_int_distribution<int>(a, b)(rng);
-    return ans;
-}
-
 std::vector<std::string> answers;
 
-ifstream fin("answers.txt");
+ifstream fin("configs/answers.txt");
+ofstream fout("configs/history.txt");
 
 int main()
 {
-    
-
+    std::map<int, int> usedIndex;
     std::string word;
+
     while (fin >> word)
         answers.push_back(word);
+    fin.close();
 
-    double guessRate = 0;
-    int totalScore = 0, tries = 3000;
-   
-    for (int word = 1; word <= tries; ++word)
+    double guessRate = 0, attemptsRate = 0;
+    int totalScore = 0, wordsGuessed = 0;
+
+    for (int word = 1; word <= NUMBER_OF_WORDS ; ++word)
     {
         Bot wordleBot;
         wordleBot.setGuesses(answers);
+
         int wordIndex = rand(0, answers.size() - 1);
+        while(usedIndex[wordIndex])
+            wordIndex = rand(0, answers.size() - 1);
+        usedIndex[wordIndex] = 1;
+
         wordleBot.setRefereeAnswer(answers[wordIndex]);
 
+        fout << "The Wordle Bot must guess the word " << answers[wordIndex] << '\n';
+
         bool ok = 0;
-        for (int trial = 1; trial <= 10; ++trial)
+        for (int trial = 1; trial <= NUMBER_OF_ATTEMPTS; ++trial)
         {
-            bool validGuess = wordleBot.takeAGuess();
+            bool validGuess = wordleBot.takeAGuess(trial, fout);
             if (validGuess)
             {
+                if(trial <= 6)
+                    wordsGuessed++;
                 totalScore += trial;
                 ok = 1;
-                // std::cout << "Wordle Bot guessed the word in " << trial << ' ' << "attempts!\n";
+
+                fout << "\nWordle Bot guessed the word in " << trial << ' ' << "attempts!\n";
                 break;
             }
+            else
+                fout << "-> ";
         }
-        // if (!ok)
-        //     std::cout << "Wordle Bot didn't manage to guess the word in 10 attempts\n";
+
+        if(!ok)
+            fout << "\nWordle Bot didn't manage to guess the word in 10 attempts\n";
+        fout << '\n';
+
     }
-    guessRate = (double)(totalScore) / (double)(tries);
-    std::cout << "Guess rate is " << guessRate << '\n';
+    attemptsRate = (double)(totalScore) / (double)(NUMBER_OF_WORDS);
+    guessRate = ((double)(wordsGuessed) / (double)(NUMBER_OF_WORDS)) * 100.0;
+
+    std::cout << std::setprecision(5) << fixed << "Attempt rate is " << attemptsRate << '\n';
+    std::cout << std::setprecision(5) << fixed << "Guess rate is " << guessRate << '\n';
 
 }

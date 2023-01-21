@@ -20,7 +20,6 @@ public:
             std::vector<char> wrongLetters;
         };
 
-        
         result evaluateWord(std::string word);
 
 };
