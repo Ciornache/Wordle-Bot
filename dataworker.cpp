@@ -56,13 +56,13 @@ void DataWorker::prelucrateData()
     memset(positionScores, false, sizeof(positionScores));
     for (auto word : answers)
     {
-        bool freq[27] = {0};
+        int freq[27] = {0};
 
         for (int index = 0; index < word.size(); ++index)
         {
             int asciiCode = word[index] - 'a';
             positionScores[index][asciiCode]++;
-            freq[asciiCode] = 1;
+            freq[asciiCode]++;
         }
         for (int letter = 0; letter < 26; ++letter)
             totalAppereances[letter] += freq[letter];

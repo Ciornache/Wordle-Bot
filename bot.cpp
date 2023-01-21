@@ -24,11 +24,10 @@ bool Bot::takeAGuess(int trial, std::ofstream &fout)
 
     // std::cout << bestGuess << ' ' << bestScore << ' ' << referee.answer << '\n';
 
-    int remainingLetters = 5 - this->guessedLetters();
-  
+    int remainingLetters = 5 - this->guessedLetters();  
     if(trial >= 1 && trial <= 3)
         bestGuess = this->findEmergencyWord();
-    
+
     // std::cout << remainingLetters << ' ' << trial << ' ' << bestGuess << '\n';
 
     for (auto ch : bestGuess)
