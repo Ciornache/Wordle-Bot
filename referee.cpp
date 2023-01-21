@@ -16,7 +16,7 @@ double Referee::getWordScore(std::string word)
         double positionScore = (double)(letterScore) * ((double)(positionFreq) / (double)(total));
         score += positionScore;
 
-        if (strchr("aeiouy", word[let]) && !freq[word[let] - 'a'])
+        if (strchr("aioy", word[let]) && !freq[word[let] - 'a'])
         {
             vowels++;
             freq[word[let] - 'a'] = 1;
