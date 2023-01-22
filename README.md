@@ -17,7 +17,9 @@ Use this to compile :
 ```
 g++ main.cpp bot.cpp referee.cpp dataworker.cpp -o main ; .\main
 ```
+### or 
 
+## Just hit F9 on CodeBlocks :)
 
 
 #### If you want to overview the process, go to configs -> history.txt
