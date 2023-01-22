@@ -1,0 +1,8 @@
+main.cpp
+obj/Debug/table.o
+obj/Debug/referee.o
+obj/Debug/painter.o
+obj/Debug/main.o
+obj/Debug/dataworker.o
+obj/Debug/bot.o
+main.o

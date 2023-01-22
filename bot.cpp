@@ -10,7 +10,7 @@ void Bot::setGuesses(std::vector<std::string> guesses)
     this->guesses = guesses;
 }
 
-bool Bot::takeAGuess(int trial, std::ofstream &fout)
+bool Bot::takeAGuess(int trial, std::ofstream &fout, std::string & chosenWord)
 {
     double bestScore = 0;
     std::string bestGuess;
@@ -24,7 +24,7 @@ bool Bot::takeAGuess(int trial, std::ofstream &fout)
 
     // std::cout << bestGuess << ' ' << bestScore << ' ' << referee.answer << '\n';
 
-    int remainingLetters = 5 - this->guessedLetters();  
+    int remainingLetters = 5 - this->guessedLetters();
     if(trial >= 1 && trial <= 3)
         bestGuess = this->findEmergencyWord();
 
@@ -38,31 +38,41 @@ bool Bot::takeAGuess(int trial, std::ofstream &fout)
 
     this->updateRestrinctions(rez);
     this->eliminateWords();
+    chosenWord = bestGuess;
 
     return rez.verdict;
 }
 
 void Bot::updateRestrinctions(Referee::result rez)
 {
+    std::ofstream tout("configs\letters.txt");
+
+    tout << "Green:";
     for (int index = 0; index < rez.goodLetters.size(); ++index)
     {
         char letter = rez.goodLetters[index].second;
         int position = rez.goodLetters[index].first;
         validPositions[position][letter - 'a'] = 1;
+        tout << letter;
     }
 
+    tout << "\nYellow:";
     for (int index = 0; index < rez.badLetters.size(); ++index)
     {
         char letter = rez.badLetters[index].second;
         int position = rez.badLetters[index].first;
         wrongPositions[position][letter - 'a'] = 1;
+        tout << letter;
     }
 
+    tout << "\nGray:";
     for (int index = 0; index < rez.wrongLetters.size(); ++index)
     {
         char letter = rez.wrongLetters[index];
         bannedLetters[letter - 'a'] = 1;
+        tout << letter;
     }
+    tout.close();
 }
 
 void Bot::eliminateWords()
@@ -101,9 +111,9 @@ void Bot::setRefereeAnswer(std::string answer)
 int Bot::guessedLetters()
 {
     int count = 0;
-    for (int pos = 0; pos < 6; ++pos)
+    for (int pos = 0; pos < POSITIONS; ++pos)
     {
-        for (int letter = 0; letter < 26; ++letter)
+        for (int letter = 0; letter < LETTERS - 1; ++letter)
             count += validPositions[pos][letter];
     }
 
@@ -116,7 +126,7 @@ std::string Bot::findEmergencyWord()
     referee.dataWorker.updateValidWords(answers);
 
     int distLetters = 0;
-    
+
     for (auto word : answers)
     {
         int count = 0;
@@ -138,7 +148,7 @@ std::string Bot::findEmergencyWord()
         for (auto ch : word)
             if (!usedLetters[ch - 'a'] && !freq[ch - 'a'])
                 count++, freq[ch - 'a'] = 1;
-        
+
         if (count == distLetters)
         {
             double wordScore = referee.getWordScore(word);
@@ -150,7 +160,7 @@ std::string Bot::findEmergencyWord()
             }
         }
     }
-    
+
     return bestGuess;
 }
 

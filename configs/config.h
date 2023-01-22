@@ -1,13 +1,20 @@
+#ifndef H_CONFIG
+#define H_CONFIG
+
 #include <chrono>
 #include <random>
 #include <ctime>
 #include <iomanip>
 #include <map>
+#include "graphics.h"
 
 #define NUMBER_OF_ATTEMPTS 10
-#define NUMBER_OF_WORDS 2300
+#define NUMBER_OF_WORDS 2315
+#define LETTERS 27
+#define POSITIONS 6
+
 #define RESET "\033[0m"
-#define BLACK "\033[30m"              /* Black */
+#define _BLACK "\033[30m"              /* Black */
 #define RED "\033[31m"                /* Red */
 #define GREEN "\033[32m"              /* Green */
 #define YELLOW "\033[33m"             /* Yellow */
@@ -24,9 +31,6 @@
 #define BOLDCYAN "\033[1m\033[36m"    /* Bold Cyan */
 #define BOLDWHITE "\033[1m\033[37m"   /* Bold White */
 
-std::mt19937 rng(std::chrono::steady_clock::now().time_since_epoch().count());
-int rand(int a, int b)
-{
-    int ans = std::uniform_int_distribution<int>(a, b)(rng);
-    return ans;
-}
+
+
+#endif // H_CONFIG

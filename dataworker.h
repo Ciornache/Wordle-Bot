@@ -1,6 +1,7 @@
 #ifndef H_DATAWORKER
 #define H_DATAWORKER
 
+#include "configs/config.h"
 #include <vector>
 #include <string>
 #include <fstream>
@@ -14,7 +15,7 @@
 class DataWorker
 {
 public:
-    
+
     DataWorker();
     void init();
     int getFrequence(char letter);

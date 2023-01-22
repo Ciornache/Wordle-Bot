@@ -7,14 +7,14 @@ class Bot
 {
     public:
         Bot();
-        bool takeAGuess(int trial, std::ofstream & fout); 
+        bool takeAGuess(int trial, std::ofstream & fout, std::string & chosenWord);
         void setGuesses(std::vector<std::string> guesses);
         void setRefereeAnswer(std::string answer);
         Referee referee;
-        
+
     private:
-        bool validPositions[6][27], wrongPositions[6][27];
-        bool bannedLetters[27], usedLetters[27];
+        bool validPositions[POSITIONS][LETTERS], wrongPositions[POSITIONS][LETTERS];
+        bool bannedLetters[LETTERS], usedLetters[LETTERS];
         std::vector<std::string> guesses;
 
         void eliminateWords();
@@ -23,7 +23,7 @@ class Bot
 
         int guessedLetters();
         std::string findEmergencyWord();
-       
+
 };
 
 
