@@ -5,9 +5,9 @@
 
 ### The data is based on 2300 tests on different words.
 
-| Guess Rate | Average Attempts |
-| -----------|:------------------:|
-| 98.57% | 4.66 |
+| Guess Rate | Average Attempts | Run time|
+| -----------|:------------------:|:-----:|
+| 98.57% | 4.66 | 19s|
 
 
 # Compile
