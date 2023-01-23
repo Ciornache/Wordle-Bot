@@ -7,8 +7,14 @@ DataWorker::DataWorker()
 
 void DataWorker::init()
 {
+    std::ofstream fout ("statistics/letterRanking.txt");
     this->readData();
-    this->prelucrateData();
+    this->prelucrateData(fout);
+}
+
+int DataWorker::getTotalWords()
+{
+    return answers.size();
 }
 
 int DataWorker::getFrequence(char letter)
@@ -28,8 +34,9 @@ int DataWorker::getLetterScore(char letter, int pos)
 
 void DataWorker::updateValidWords(std::vector<std::string> answers)
 {
+    std::ofstream tout ("random.txt");
     this->answers = answers;
-    this->prelucrateData();
+    this->prelucrateData(tout);
 }
 
 std::vector<std::string> DataWorker::getAnswers()
@@ -49,14 +56,12 @@ void DataWorker::readData()
     fin.close();
 }
 
-void DataWorker::prelucrateData()
+void DataWorker::prelucrateData(std::ofstream & fout)
 {
-    memset(totalAppereances, false, sizeof(totalAppereances));
-    memset(letterScore, false, sizeof(letterScore));
-    memset(positionScores, false, sizeof(positionScores));
+    this->reset();
     for (auto word : answers)
     {
-        int freq[27] = {0};
+        int freq[LETTERS + 1] = {0};
 
         for (int index = 0; index < word.size(); ++index)
         {
@@ -64,23 +69,57 @@ void DataWorker::prelucrateData()
             positionScores[index][asciiCode]++;
             freq[asciiCode]++;
         }
-        for (int letter = 0; letter < 26; ++letter)
+        for (int letter = 0; letter < LETTERS - 1; ++letter)
             totalAppereances[letter] += freq[letter];
     }
-    this->calculateInflunce();
+    this->calculateInflunce(fout);
 }
 
-void DataWorker::calculateInflunce()
+void DataWorker::calculateInflunce(std::ofstream & fout)
 {
     std::vector<std::pair<int, char>> scoreBoard;
-    for (int pos = 0; pos < 6; ++pos)
+    for (int pos = 0; pos < POSITIONS - 1; ++pos)
     {
-        for (int letter = 0; letter < 26; ++letter)
+        for (int letter = 0; letter < LETTERS - 1; ++letter)
             scoreBoard.push_back({positionScores[pos][letter], (char)(letter + 'a')});
+
         std::sort(scoreBoard.begin(), scoreBoard.end());
+        this->printPositionRanking(scoreBoard, pos, fout);
 
         for (int index = 0; index < scoreBoard.size(); ++index)
             letterScore[pos][scoreBoard[index].second - 'a'] = index + 1;
         scoreBoard.clear();
     }
+    this->printAppearancesRanking(fout);
+}
+
+void DataWorker::printPositionRanking(std::vector<std::pair<int, char>> scoreBoard, int position, std::ofstream &fout)
+{
+    fout << "Ranking for frequency on position " << position + 1 << "\n\n";
+    for(int index = 0;index < scoreBoard.size(); ++index)
+        fout << 26 - index << ". " << scoreBoard[index].second << ' ' << scoreBoard[index].first << '\n';
+    fout << '\n';
+}
+
+void DataWorker::printAppearancesRanking(std::ofstream &fout)
+{
+    fout << "Ranking for frequency overall in words\n\n";
+    std::vector<std::pair<int, char>> scoreBoard;
+
+    for (int letter = 0; letter < LETTERS - 1; ++letter)
+            scoreBoard.push_back({totalAppereances[letter], (char)(letter + 'a')});
+
+    std::sort(scoreBoard.begin(), scoreBoard.end());
+
+    for(int index = 0;index < scoreBoard.size(); ++index)
+        fout << 26 - index << ". " << scoreBoard[index].second << ' ' << scoreBoard[index].first << '\n';
+    fout << '\n';
+
+}
+
+void DataWorker::reset()
+{
+    memset(totalAppereances, false, sizeof(totalAppereances));
+    memset(letterScore, false, sizeof(letterScore));
+    memset(positionScores, false, sizeof(positionScores));
 }

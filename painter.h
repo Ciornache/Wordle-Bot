@@ -14,6 +14,7 @@ class Painter
 public:
     Painter();
     void drawSquare(int leftUpRow, int leftUpColumn, int rightDownRow, int rightDownColumn);
+    void printMessage(char message[], int x, int y, int size);
 };
 
 

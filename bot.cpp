@@ -125,26 +125,14 @@ std::string Bot::findEmergencyWord()
     std::vector<std::string> answers = referee.dataWorker.getAnswers();
     referee.dataWorker.updateValidWords(answers);
 
-    int distLetters = 0;
-
-    for (auto word : answers)
-    {
-        int count = 0;
-        for (auto ch : word)
-            if (!usedLetters[ch - 'a'])
-                count++;
-
-        if (count > distLetters)
-            distLetters = count;
-    }
-
+    int distLetters = Bot::maximumDistinctLetters(answers);
     std::string bestGuess;
     double bestScore = 0;
 
     for (auto word : answers)
     {
         int count = 0;
-        bool freq[27] = {0};
+        bool freq[LETTERS + 1] = {0};
         for (auto ch : word)
             if (!usedLetters[ch - 'a'] && !freq[ch - 'a'])
                 count++, freq[ch - 'a'] = 1;
@@ -170,4 +158,20 @@ void Bot::reset()
     memset(wrongPositions, false, sizeof(wrongPositions));
     memset(bannedLetters, false, sizeof(bannedLetters));
     memset(usedLetters, false, sizeof(usedLetters));
+}
+
+int Bot::maximumDistinctLetters(std::vector<std::string> answers)
+{
+    int distLetters = 0;
+    for (auto word : answers)
+    {
+        int count = 0;
+        for (auto ch : word)
+            if (!usedLetters[ch - 'a'])
+                count++;
+
+        if (count > distLetters)
+            distLetters = count;
+    }
+    return distLetters;
 }

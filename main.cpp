@@ -6,9 +6,9 @@
 
 using namespace std;
 
-std::vector<std::string> answers;
-
-Table table;
+ifstream fin("configs/answers.txt");
+ofstream fout("configs/history.txt");
+ofstream lout("configs/failedWords.txt");
 
 std::mt19937 rng(std::chrono::steady_clock::now().time_since_epoch().count());
 int rand(int a, int b)
@@ -17,16 +17,22 @@ int rand(int a, int b)
     return ans;
 }
 
-ifstream fin("configs/answers.txt");
-ofstream fout("configs/history.txt");
-ofstream lout("configs/failedWords.txt");
-
-string chosenWord;
-
-void sleep(int s)
+void sleep(double s)
 {
     Sleep(s * 1000);
 }
+
+void addLetter(char source[], char a)
+{
+    char let[2] = {0};
+    let[0] = a - 'a' + 'A', let[1] = '\0';
+    strcat(source, let);
+}
+
+Table table;
+
+std::vector<std::string> answers;
+std::string chosenWord;
 
 int main()
 {
@@ -43,14 +49,26 @@ int main()
     table.init();
     double guessRate = 0, attemptsRate = 0;
     int totalScore = 0, wordsGuessed = 0;
+    char message[] = "The Wordle Bot has to guess the word";
+
+    Bot copyBot;
+    copyBot.referee.printStats();
 
     for (int word = 1; word <= NUMBER_OF_WORDS; ++word)
     {
+        int wordIndex = rand(0, answers.size() - 1);
         table.refresh();
         Bot wordleBot;
-        wordleBot.setGuesses(answers);
 
-        int wordIndex = rand(0, answers.size() - 1);
+        wordleBot.setGuesses(answers);
+        table.message(message, X_TEXT + 30, Y_TEXT, TEXT_SIZE);
+
+        char currentWord[PATH_SIZE] = {0};
+        for(auto letter : answers[wordIndex])
+            addLetter(currentWord, letter);
+
+        table.message(currentWord, X_TEXT + 220, Y_TEXT + 80, TEXT_SIZE + 2);
+
         while(usedIndex[wordIndex])
             wordIndex = rand(0, answers.size() - 1);
         usedIndex[wordIndex] = 1;
@@ -74,13 +92,13 @@ int main()
 
                 totalScore += trial;
                 ok = 1;
-                sleep(1);
+                sleep(0.4);
                 fout << "\nWordle Bot guessed the word in " << trial << ' ' << "attempts!\n";
                 break;
             }
             else
                 fout << "-> ";
-            sleep(1);
+            sleep(0.4);
         }
 
         if(!ok)

@@ -9,3 +9,9 @@ void Painter::drawSquare(int leftUpRow, int leftUpColumn, int rightDownRow, int 
     line(rightDownRow, leftUpColumn, rightDownRow, rightDownColumn);
     line(leftUpRow, rightDownColumn, rightDownRow, rightDownColumn);
 }
+
+void Painter::printMessage(char message[], int x, int y, int size)
+{
+    settextstyle(TRIPLEX_FONT, HORIZ_DIR, size);
+    outtextxy(x, y, message);
+}

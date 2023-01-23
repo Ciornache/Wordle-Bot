@@ -11,6 +11,7 @@ public:
     DataWorker dataWorker;
     friend class Bot;
     double getWordScore(std::string word);
+    void printStats();
 
 private:
 
@@ -20,7 +21,9 @@ private:
         std::vector<std::pair<int, char>> goodLetters, badLetters;
         std::vector<char> wrongLetters;
     };
+
     std::string answer;
+    std::vector<std::pair<double, std::string>> stats;
     Referee::result evaluateWord(std::string word);
 
 };

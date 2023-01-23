@@ -21,18 +21,23 @@ public:
     int getFrequence(char letter);
     int getFrequenceByPos(char letter, int pos);
     int getLetterScore(char letter, int pos);
+    int getTotalWords();
     void updateValidWords(std::vector<std::string> answers);
     std::vector<std::string> getAnswers();
 
 private:
-
     std::vector<std::string> answers, allAnswers;
-    int positionScores[6][27];
-    int totalAppereances[27], letterScore[6][27];
+    int positionScores[POSITIONS][LETTERS];
+    int totalAppereances[LETTERS], letterScore[POSITIONS][LETTERS];
 
-    void prelucrateData();
+    void prelucrateData(std::ofstream & fout);
     void readData();
-    void calculateInflunce();
+    void calculateInflunce(std::ofstream & fout);
+    void reset();
+
+    void printAppearancesRanking(std::ofstream &fout);
+    void printPositionRanking(std::vector<std::pair<int, char>> scoreBoard, int position, std::ofstream &fout);
+
 };
 
 #endif // H_DATAWORKER

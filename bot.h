@@ -21,6 +21,7 @@ class Bot
         void updateRestrinctions(Referee::result rez);
         void reset();
 
+        int maximumDistinctLetters(std::vector<std::string> answers);
         int guessedLetters();
         std::string findEmergencyWord();
 

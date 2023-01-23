@@ -77,3 +77,8 @@ void Table::place(int round, std::string word)
     }
     tin.close();
 }
+
+void Table::message(char message[], int x, int y, int size)
+{
+    painter.printMessage(message, x, y, size);
+}
