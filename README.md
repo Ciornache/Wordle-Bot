@@ -23,3 +23,18 @@ g++ main.cpp bot.cpp referee.cpp dataworker.cpp -o main ; .\main
 
 
 #### If you want to overview the process, go to configs -> history.txt
+
+###Statistifcs
+
+| Word | Score |
+| ----|:------:|
+| soapy | 58.95 |
+| rainy| 51.63|
+| daisy| 51.41| 
+| fairy| 50.82|
+| gaily| 50.80|
+| savoy| 50.54|
+| daily| 50.48|
+| dairy| 49.57|
+| foamy| 47.79|
+| hairy| 47.55|
