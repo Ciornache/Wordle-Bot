@@ -24,9 +24,9 @@ g++ main.cpp bot.cpp referee.cpp dataworker.cpp -o main ; .\main
 
 #### If you want to overview the process, go to configs -> history.txt
 
-### Statistics
+# Statistics
 
-# Top Ten Openers Judged by my bot. 
+### Top Ten Openers Judged by my bot. 
 
 | Word | Score |
 | ----|:------:|
