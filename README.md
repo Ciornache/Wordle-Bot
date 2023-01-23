@@ -15,7 +15,7 @@
 Use this to compile :
 
 ```
-g++ main.cpp bot.cpp referee.cpp dataworker.cpp -o main ; .\main
+g++ table.cpp main.cpp bot.cpp referee.cpp dataworker.cpp -o main ; .\main
 ```
 ### or 
 
