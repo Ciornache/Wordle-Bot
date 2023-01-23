@@ -31,12 +31,12 @@ g++ main.cpp bot.cpp referee.cpp dataworker.cpp -o main ; .\main
 | Word | Score |
 | ----|:------:|
 | soapy | 58.95 |
+| poise| 55.07|
+| raise| 54.18| 
+| boney| 54.03|
+| cagey| 53.95|
+| gooey| 53.93|
+| arise| 53.81|
+| arose| 52.44|
 | rainy| 51.63|
-| daisy| 51.41| 
-| fairy| 50.82|
-| gaily| 50.80|
-| savoy| 50.54|
-| daily| 50.48|
-| dairy| 49.57|
-| foamy| 47.79|
-| hairy| 47.55|
+| covey| 51.46|
