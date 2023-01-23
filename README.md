@@ -26,7 +26,7 @@ g++ main.cpp bot.cpp referee.cpp dataworker.cpp -o main ; .\main
 
 # Statistics
 
-### Top Ten Openers Judged by my bot. 
+### Top Ten Openers judged by my bot. 
 
 | Word | Score |
 | ----|:------:|
