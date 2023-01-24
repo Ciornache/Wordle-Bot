@@ -24,6 +24,9 @@ public:
     int getTotalWords();
     void updateValidWords(std::vector<std::string> answers);
     std::vector<std::string> getAnswers();
+    std::vector<std::string> getAllAnswers();
+
+    friend class Referee;
 
 private:
     std::vector<std::string> answers, allAnswers;

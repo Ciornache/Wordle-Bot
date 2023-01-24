@@ -8,13 +8,13 @@ class Referee
 
 public:
     Referee();
-    DataWorker dataWorker;
-    friend class Bot;
-    double getWordScore(std::string word);
     void printStats();
+
+    friend class Bot;
 
 private:
 
+    DataWorker dataWorker;
     struct result
     {
         bool verdict;
@@ -23,9 +23,15 @@ private:
     };
 
     std::string answer;
+
     std::vector<std::pair<double, std::string>> stats;
     Referee::result evaluateWord(std::string word);
 
+    double findEntropy(std::string word);
+    double evaluatePattern(int pattern[], std::string word);
+    double getWordScore(std::string word);
+
+    bool judgeByResult(result rez, std::string word);
 };
 
 #endif /// H_REFEREE

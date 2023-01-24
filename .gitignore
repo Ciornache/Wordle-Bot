@@ -6,3 +6,4 @@ obj/Debug/main.o
 obj/Debug/dataworker.o
 obj/Debug/bot.o
 main.o
+obj/Debug/game.o

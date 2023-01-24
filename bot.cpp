@@ -10,6 +10,19 @@ void Bot::setGuesses(std::vector<std::string> guesses)
     this->guesses = guesses;
 }
 
+void Bot::setRefereeAnswer(std::string answer)
+{
+    referee.answer = answer;
+}
+
+void Bot::reset()
+{
+    memset(validPositions, false, sizeof(validPositions));
+    memset(wrongPositions, false, sizeof(wrongPositions));
+    memset(bannedLetters, false, sizeof(bannedLetters));
+    memset(usedLetters, false, sizeof(usedLetters));
+}
+
 bool Bot::takeAGuess(int trial, std::ofstream &fout, std::string & chosenWord)
 {
     double bestScore = 0;
@@ -25,9 +38,10 @@ bool Bot::takeAGuess(int trial, std::ofstream &fout, std::string & chosenWord)
     // std::cout << bestGuess << ' ' << bestScore << ' ' << referee.answer << '\n';
 
     int remainingLetters = 5 - this->guessedLetters();
-    if(trial >= 1 && trial <= 3)
-        bestGuess = this->findEmergencyWord();
-
+//    if(trial >= 1 && trial <= 3)
+//        bestGuess = this->findWordByEntropy();
+      if(trial >= 1 && trial <= 3)
+            bestGuess = this->findEmergencyWord();
     // std::cout << remainingLetters << ' ' << trial << ' ' << bestGuess << '\n';
 
     for (auto ch : bestGuess)
@@ -103,11 +117,6 @@ void Bot::eliminateWords()
     referee.dataWorker.updateValidWords(guesses);
 }
 
-void Bot::setRefereeAnswer(std::string answer)
-{
-    referee.answer = answer;
-}
-
 int Bot::guessedLetters()
 {
     int count = 0;
@@ -152,14 +161,6 @@ std::string Bot::findEmergencyWord()
     return bestGuess;
 }
 
-void Bot::reset()
-{
-    memset(validPositions, false, sizeof(validPositions));
-    memset(wrongPositions, false, sizeof(wrongPositions));
-    memset(bannedLetters, false, sizeof(bannedLetters));
-    memset(usedLetters, false, sizeof(usedLetters));
-}
-
 int Bot::maximumDistinctLetters(std::vector<std::string> answers)
 {
     int distLetters = 0;
@@ -174,4 +175,22 @@ int Bot::maximumDistinctLetters(std::vector<std::string> answers)
             distLetters = count;
     }
     return distLetters;
+}
+
+std::string Bot::findWordByEntropy()
+{
+    double highestEntropy = 0;
+    std::string bestGuess;
+
+    for(auto word : guesses)
+    {
+        double entropy = referee.findEntropy(word);
+        if(entropy > highestEntropy)
+        {
+            highestEntropy = entropy;
+            bestGuess = word;
+        }
+    }
+
+    return bestGuess;
 }

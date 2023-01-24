@@ -32,16 +32,29 @@ int DataWorker::getLetterScore(char letter, int pos)
     return letterScore[pos][letter - 'a'];
 }
 
+std::vector<std::string> DataWorker::getAnswers()
+{
+    return allAnswers;
+}
+
+std::vector<std::string> DataWorker::getAllAnswers()
+{
+    std::ifstream fin("configs/validWords.txt");
+    std::string word;
+    std::vector<std::string> ans;
+
+    while(fin >> word)
+        ans.push_back(word);
+    fin.close();
+
+    return ans;
+}
+
 void DataWorker::updateValidWords(std::vector<std::string> answers)
 {
     std::ofstream tout ("random.txt");
     this->answers = answers;
     this->prelucrateData(tout);
-}
-
-std::vector<std::string> DataWorker::getAnswers()
-{
-    return allAnswers;
 }
 
 void DataWorker::readData()

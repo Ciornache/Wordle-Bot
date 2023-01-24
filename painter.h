@@ -13,6 +13,9 @@ class Painter
 {
 public:
     Painter();
+    friend class Table;
+
+private:
     void drawSquare(int leftUpRow, int leftUpColumn, int rightDownRow, int rightDownColumn);
     void printMessage(char message[], int x, int y, int size);
 };

@@ -24,6 +24,7 @@ class Bot
         int maximumDistinctLetters(std::vector<std::string> answers);
         int guessedLetters();
         std::string findEmergencyWord();
+        std::string findWordByEntropy();
 
 };
 
