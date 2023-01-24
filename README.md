@@ -15,7 +15,7 @@
 Use this to compile :
 
 ```
-g++ main.cpp bot.cpp referee.cpp dataworker.cpp -o main ; .\main
+g++ table.cpp painter.cpp main.cpp bot.cpp referee.cpp dataworker.cpp -o main ; .\main
 ```
 ### or 
 
@@ -40,3 +40,5 @@ g++ main.cpp bot.cpp referee.cpp dataworker.cpp -o main ; .\main
 | raise| 55.6406|
 | canoe| 54.2151|
 | arise| 53.8177|
+
+### For more of these, check the statistics folder
