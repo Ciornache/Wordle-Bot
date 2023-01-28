@@ -34,6 +34,8 @@
 		</Compiler>
 		<Unit filename="bot.cpp" />
 		<Unit filename="bot.h" />
+		<Unit filename="configs/config.h" />
+		<Unit filename="configs/graphicUtilities.h" />
 		<Unit filename="dataworker.cpp" />
 		<Unit filename="dataworker.h" />
 		<Unit filename="game.cpp" />

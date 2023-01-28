@@ -6,7 +6,7 @@ Ranking for frequency on position 1
 23. d 0
 22. e 0
 21. f 0
-20. h 0
+20. g 0
 19. i 0
 18. j 0
 17. k 0
@@ -25,9 +25,38 @@ Ranking for frequency on position 1
 4. x 0
 3. y 0
 2. z 0
-1. g 1
+1. h 1
 
 Ranking for frequency on position 2
+
+26. a 0
+25. b 0
+24. c 0
+23. d 0
+22. e 0
+21. f 0
+20. g 0
+19. h 0
+18. i 0
+17. j 0
+16. k 0
+15. l 0
+14. m 0
+13. n 0
+12. o 0
+11. p 0
+10. q 0
+9. r 0
+8. s 0
+7. t 0
+6. v 0
+5. w 0
+4. x 0
+3. y 0
+2. z 0
+1. u 1
+
+Ranking for frequency on position 3
 
 26. a 0
 25. b 0
@@ -56,7 +85,7 @@ Ranking for frequency on position 2
 2. z 0
 1. r 1
 
-Ranking for frequency on position 3
+Ranking for frequency on position 4
 
 26. a 0
 25. b 0
@@ -72,9 +101,9 @@ Ranking for frequency on position 3
 15. l 0
 14. m 0
 13. n 0
-12. p 0
-11. q 0
-10. r 0
+12. o 0
+11. p 0
+10. q 0
 9. s 0
 8. t 0
 7. u 0
@@ -83,9 +112,9 @@ Ranking for frequency on position 3
 4. x 0
 3. y 0
 2. z 0
-1. o 1
+1. r 1
 
-Ranking for frequency on position 4
+Ranking for frequency on position 5
 
 26. a 0
 25. b 0
@@ -109,39 +138,10 @@ Ranking for frequency on position 4
 7. t 0
 6. u 0
 5. v 0
-4. x 0
-3. y 0
+4. w 0
+3. x 0
 2. z 0
-1. w 1
-
-Ranking for frequency on position 5
-
-26. a 0
-25. b 0
-24. c 0
-23. d 0
-22. e 0
-21. f 0
-20. g 0
-19. h 0
-18. i 0
-17. j 0
-16. k 0
-15. m 0
-14. n 0
-13. o 0
-12. p 0
-11. q 0
-10. r 0
-9. s 0
-8. t 0
-7. u 0
-6. v 0
-5. w 0
-4. x 0
-3. y 0
-2. z 0
-1. l 1
+1. y 1
 
 Ranking for frequency overall in words
 
@@ -151,24 +151,24 @@ Ranking for frequency overall in words
 23. d 0
 22. e 0
 21. f 0
-20. h 0
+20. g 0
 19. i 0
 18. j 0
 17. k 0
-16. m 0
-15. n 0
-14. p 0
-13. q 0
-12. s 0
-11. t 0
-10. u 0
-9. v 0
-8. x 0
-7. y 0
-6. z 0
-5. g 1
-4. l 1
-3. o 1
-2. r 1
-1. w 1
+16. l 0
+15. m 0
+14. n 0
+13. o 0
+12. p 0
+11. q 0
+10. s 0
+9. t 0
+8. v 0
+7. w 0
+6. x 0
+5. z 0
+4. h 1
+3. u 1
+2. y 1
+1. r 2
 

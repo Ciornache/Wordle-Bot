@@ -10,3 +10,12 @@
 #define TEXT_SIZE 2
 #define X_TEXT 100
 #define Y_TEXT 100
+#define TEXT_HEIGHT 30
+#define TEXT_WIDTH 20
+
+
+
+
+
+HDC BGI__GetWinbgiDC(HWND=NULL);
+void BGI__ReleaseWinbgiDC(HWND=NULL);

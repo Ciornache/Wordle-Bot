@@ -7,7 +7,7 @@
 #include <string.h>
 #include <fstream>
 #include <iostream>
-
+#include <bits/stdc++.h>
 
 class Painter
 {
@@ -17,7 +17,7 @@ public:
 
 private:
     void drawSquare(int leftUpRow, int leftUpColumn, int rightDownRow, int rightDownColumn);
-    void printMessage(char message[], int x, int y, int size);
+    void printMessage(char message[], int height, int width, char font[], int x, int y, int size);
 };
 
 

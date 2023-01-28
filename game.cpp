@@ -107,13 +107,13 @@ void Game::runAll()
         Bot wordleBot;
 
         wordleBot.setGuesses(answers);
-        table.message(message, X_TEXT + 30, Y_TEXT, TEXT_SIZE);
+        table.message(message, TEXT_HEIGHT - 5, TEXT_WIDTH - 5, "Arial", X_TEXT + 20, Y_TEXT, TEXT_SIZE);
 
         char currentWord[PATH_SIZE] = {0};
         for(auto letter : answers[wordIndex])
             addLetter(currentWord, letter);
 
-        table.message(currentWord, X_TEXT + 220, Y_TEXT + 80, TEXT_SIZE + 2);
+        table.message(currentWord, TEXT_HEIGHT + 5, TEXT_WIDTH, "Arial", X_TEXT + 220, Y_TEXT + 80, TEXT_SIZE + 2);
 
         while(usedIndex[wordIndex])
             wordIndex = rand(0, answers.size() - 1);

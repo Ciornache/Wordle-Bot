@@ -1,6 +1,8 @@
 #ifndef H_CONFIG
 #define H_CONFIG
 
+#pragma GCC optimize("O3")
+
 #include <chrono>
 #include <random>
 #include <ctime>
@@ -30,6 +32,7 @@
 #define BOLDMAGENTA "\033[1m\033[35m" /* Bold Magenta */
 #define BOLDCYAN "\033[1m\033[36m"    /* Bold Cyan */
 #define BOLDWHITE "\033[1m\033[37m"   /* Bold White */
+
 
 
 

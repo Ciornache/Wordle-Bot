@@ -10,8 +10,13 @@ void Painter::drawSquare(int leftUpRow, int leftUpColumn, int rightDownRow, int 
     line(leftUpRow, rightDownColumn, rightDownRow, rightDownColumn);
 }
 
-void Painter::printMessage(char message[], int x, int y, int size)
+void Painter::printMessage(char message[], int height, int width, char font[], int x, int y, int size)
 {
-    settextstyle(TRIPLEX_FONT, HORIZ_DIR, size);
+
+    HFONT hFont=CreateFont(height,width,0,0,0,0,0,0,1,0,0,0,0,TEXT("Arial"));
+    HDC hDC=BGI__GetWinbgiDC();
+    DeleteObject(SelectObject(hDC,hFont));
+    BGI__ReleaseWinbgiDC(NULL);
+
     outtextxy(x, y, message);
 }

@@ -17,7 +17,7 @@ public:
     void init();
     void place(int round, std::string word);
     void refresh();
-    void message(char message[], int x, int y, int size);
+    void message(char message[], int height, int width, char font[], int x, int y, int size);
 
 private:
     Painter painter;

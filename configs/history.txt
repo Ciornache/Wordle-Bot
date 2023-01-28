@@ -1,17 +1,1 @@
-The Wordle Bot must guess the word strip
-soapy -> brine -> gulch -> strip 
-Wordle Bot guessed the word in 4 attempts!
-
-The Wordle Bot must guess the word posse
-soapy -> brine -> gulch -> moose -> posse 
-Wordle Bot guessed the word in 5 attempts!
-
-The Wordle Bot must guess the word birth
-soapy -> brine -> gulch -> birth 
-Wordle Bot guessed the word in 4 attempts!
-
-The Wordle Bot must guess the word tabby
-soapy -> brine -> gulch -> tatty -> taffy -> tabby 
-Wordle Bot guessed the word in 6 attempts!
-
-The Wordle Bot must guess the word 
+soapy brine gulch murky hurry 

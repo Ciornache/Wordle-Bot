@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1674583685 source:d:\documents\wordle bot\bot.cpp
+1674583962 source:d:\documents\wordle bot\bot.cpp
 	"bot.h"
 
 1674579835 d:\documents\wordle bot\bot.h
@@ -19,7 +19,7 @@
 	<algorithm>
 	<cstring>
 
-1674474071 d:\documents\wordle bot\configs\config.h
+1674939190 d:\documents\wordle bot\configs\config.h
 	<chrono>
 	<random>
 	<ctime>
@@ -30,7 +30,7 @@
 1674576724 source:d:\documents\wordle bot\dataworker.cpp
 	"dataworker.h"
 
-1674583777 source:d:\documents\wordle bot\main.cpp
+1674938491 source:d:\documents\wordle bot\main.cpp
 	"configs/config.h"
 	"game.h"
 
@@ -38,26 +38,27 @@
 	<chrono>
 	<fstream>
 
-1674473573 d:\documents\wordle bot\table.h
+1674938491 d:\documents\wordle bot\table.h
 	"painter.h"
 
-1674498066 d:\documents\wordle bot\painter.h
+1674938543 d:\documents\wordle bot\painter.h
 	<graphics.h>
 	"configs\graphicUtilities.h"
 	<vector>
 	<string.h>
 	<fstream>
 	<iostream>
+	<bits/stdc++.h>
 
-1674473256 d:\documents\wordle bot\configs\graphicutilities.h
+1674938992 d:\documents\wordle bot\configs\graphicutilities.h
 
-1674473573 source:d:\documents\wordle bot\painter.cpp
+1674938792 source:d:\documents\wordle bot\painter.cpp
 	"painter.h"
 
 1674582394 source:d:\documents\wordle bot\referee.cpp
 	"referee.h"
 
-1674473573 source:d:\documents\wordle bot\table.cpp
+1674938615 source:d:\documents\wordle bot\table.cpp
 	"table.h"
 
 1674580274 d:\documents\wordle bot\game.h
@@ -70,6 +71,6 @@
 	<bits/stdc++.h>
 	<thread>
 
-1674579667 source:d:\documents\wordle bot\game.cpp
+1674939019 source:d:\documents\wordle bot\game.cpp
 	"game.h"
 
